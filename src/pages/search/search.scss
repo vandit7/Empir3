@@ -1,0 +1,69 @@
+page-search {
+    .header_viewall {
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px 0px;
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.4px;
+      }
+      .header_videos {
+        font-size: 16px;
+        color: #2375da;
+        font-weight: 500;
+        font-family: "Oswald", sans-serif;
+      }
+      .videoDiv {
+        width: 100%;
+        height: 160px;
+        margin: 0;
+        border-radius: 5px;
+      }
+      .newsTitleVideo {
+        position: absolute;
+        bottom: 7px;
+        font-size: 13px;
+        color: #fff;
+        width: 80%;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-align: left;
+        overflow: hidden;
+        z-index: 333333333;
+        font-family: "Oswald", sans-serif;
+        padding-left: 7px;
+        padding-right: 7px;
+        letter-spacing: 0.4px;
+        line-height: 13px;
+        font-weight: 400;
+        white-space: normal;
+        height: 27px;
+      }
+      .grcolor-trending {
+        position: absolute;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, transparent), to(#000));
+        background-image: linear-gradient(transparent 60%, #000);
+        z-index: 99999999;
+        width: 96%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+      }
+      .noRecord {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 25px;
+        text-transform: uppercase;
+        font-family: "Oswald", sans-serif;
+        color: #2375da;
+      }
+      .searchbar-has-value.searchbar-has-focus .searchbar-clear-icon{
+        height: 32px;
+        width: 26px;
+        background-color: #fff;
+      }
+}

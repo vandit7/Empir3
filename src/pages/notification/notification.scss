@@ -1,0 +1,46 @@
+page-notification {
+  .header_videos {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Oswald", sans-serif;
+  }
+  .news-like {
+    padding: 6px 0px 0px 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: auto;
+    line-height: 1.4em;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-family: "Oswald", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+  }
+  .like-time-news {
+    padding: 12px 0px 0px 7px;
+    font-size: 10px;
+    color: #9ca4ab;
+  }
+  .time {
+    font-size: 10px;
+    color: #9ca4ab;
+    padding: 5px;
+    padding-bottom: 5px;
+  }
+  .header_viewall{
+    padding: 5px;
+    padding-bottom: 5px;
+  }
+  .sharecls{
+    position: absolute;
+    z-index: 999;
+    padding: 7px;
+    border-radius: 100%;
+    margin: auto;
+    display: block;
+    width: 30px;
+    height: 30px;
+    right: 2px;
+  }
+}

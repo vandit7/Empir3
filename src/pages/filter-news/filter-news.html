@@ -1,0 +1,123 @@
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <div class="" style="width: 100%;float: left; ">
+      <div (click)="goHome()" style="width: 10%;float: left; "><img src="../../assets/imgs/back.png" class="bk-btn">
+      </div>
+      <ion-scroll class="scrollTOP hdCss" scrollX="true" direction="x"
+        style="height: 25px;white-space: nowrap;width: 90%;margin-top:4px;float: left;">
+        <div class="cardTOP" style="margin: 5px 5px 4px 4px;" *ngFor="let cate of categoryList; let i = index">
+          <p class="ptagNew dyn">
+            {{cate.CategoryName}}
+          </p>
+        </div>
+      </ion-scroll>
+      <!-- <div class="title">
+        Your News Feeds
+      </div> -->
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageTop>
+  <div>
+    <!-- <ion-scroll class="ion-scroll1 topNewScroll" scrollX="true" direction="x">
+      <div class="slidercat">
+        <div class="header_viewall" *ngFor="let cate of categoryList; let i = index">
+          <div class="header_videos catecls">{{cate.CategoryName}}</div>
+        </div>
+      </div>
+    </ion-scroll> -->
+   
+  </div>
+  <div *ngIf="filterListdataLength > 0">
+    <div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column" *ngFor="let info1 of filterListdata.slice(0, 10); let i = index"
+          (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+      *ngFor="let info1 of filterListdata.slice(11, 20); let i = index">
+      <div class="news-video" (click)="getnewDetails(info1.Id)">
+        <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+          class="img-video" />
+        <div class="fullImg">
+          {{info1.title}}
+        </div>
+        <div class="grNew"></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="filterListdataLength > 0">
+    <div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column" *ngFor="let info1 of filterListdata.slice(21, 35); let i = index"
+          (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+      *ngFor="let info1 of filterListdata.slice(36, 60); let i = index">
+      <div class="news-video" (click)="getnewDetails(info1.Id)">
+        <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+          class="img-video" />
+        <div class="fullImg">
+          {{info1.title}}
+        </div>
+        <div class="grNew"></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+      *ngFor="let info1 of filterListdata.slice(61, 70); let i = index">
+      <div class="news-video" (click)="getnewDetails(info1.Id)">
+        <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+          class="img-video" />
+        <div class="fullImg">
+          {{info1.title}}
+        </div>
+        <div class="grNew"></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="filterListdataLength > 0">
+    <div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column" *ngFor="let info1 of filterListdata.slice(71, 150); let i = index"
+          (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

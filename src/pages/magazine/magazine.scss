@@ -1,0 +1,15 @@
+page-magazine {
+    .news-like {
+        padding: 6px 0px 0px 8px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: auto;
+        line-height: 1.4em;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        font-family: "Oswald", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.4px;
+      }
+}

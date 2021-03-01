@@ -1,0 +1,21 @@
+<ion-header class="topCss">
+  <ion-navbar>
+    <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div style="position: relative; margin: 5px 0px 10px 0px;height: 100%;"
+    *ngFor="let info1 of photoList; let i = index">
+      <div class="news-video">
+        <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+          class="img-video1" imageViewer/>
+        <div class="fullImg">
+          {{info1.title}}
+        </div>
+        <div class="grNew"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

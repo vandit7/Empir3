@@ -1,0 +1,38 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Search Your Feeds</ion-title>
+  </ion-navbar>
+  <ion-searchbar (keyup)="getTitles($event);" [(ngModel)]="myInput" [showCancelButton]="false">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div *ngIf="searchListLength > 0">
+      <div class="header_viewall">
+        <div class="header_videos">News</div>
+      </div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column" *ngFor="let info1 of searchList; let i = index" (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor-trending">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="searchListLength == 0">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+</ion-content>

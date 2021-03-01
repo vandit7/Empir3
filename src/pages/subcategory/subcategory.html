@@ -1,0 +1,67 @@
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle style="display: block !important;">
+      <ion-icon><img src="../../assets/imgs/menu.png" style="height: 17px;"></ion-icon>
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+    </button>
+  </ion-navbar>
+  <div class="cat_cls">
+    <div class="header_viewall">
+      <div class="header_videos" >Top News For <span class="TxtLed">{{categoryName}}</span></div>
+      <!-- <a (click)="viewAll('business')" class="atag">View All</a> -->
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="newsBusinessLenght > 0">
+    <div class="mb10">
+      <div class="div-like" *ngFor="let info1 of newsBusiness; let i = index">
+        <div>
+          <ion-card class="enterDiv">
+            <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+              class="img-like" alt="" imageViewer>
+          </ion-card>
+        </div>
+        <div (click)="getnewDetails(info1.Id)">
+          <div class="news-like">
+            {{info1.title}}
+          </div>
+          <div class="like-time-news">{{info1.PublishDate}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="newsBusinessLenght == 0">
+    <div *ngIf="newsBanner1Length > 0">
+      <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+        *ngFor="let info1 of newsBanner1; let i = index">
+        <div class="news-video" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-video" />
+          <div class="fullImg">
+            {{info1.title}}
+          </div>
+          <div class="grNew"></div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="newsBanner2Length > 0">
+      <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+        *ngFor="let info1 of newsBanner2; let i = index">
+        <div class="news-video" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-video" />
+          <div class="fullImg">
+            {{info1.title}}
+          </div>
+          <div class="grNew"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

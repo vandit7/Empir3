@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <div class="divcls">
+      <a (click)="goMainfilter()"><img src="../../assets/imgs/back.png" class="bk-btn"></a>
+      <ion-slides class="" [slidesPerView]="5" style="height: 30px;">
+        <ion-slide *ngFor="let cate of categoryList; let i = index">
+          <p (click)="goMainfilter()" class="ptag" id="{{cate.CategoryName}}">
+              {{cate.CategoryName}}
+          </p>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="newsdet-title">
+    {{content1}}
+  </div>
+  <div class="news-detslider">
+    <div class="news-deticon">
+      <img src="../../assets/imgs/info.png" style="height: 17px;">
+    </div>
+    <div class="news-deticon1">
+      <img src="../../assets/imgs/share.png" style="height: 17px;">
+    </div>
+    <ion-slides pager="true" class="banner-section" [slidesPerView]="1">
+      <ion-slide class="sli paginaton">
+        <a>
+          <img src="{{image}}" class="banner" />
+        </a>
+      </ion-slide>
+      <ion-slide class="sli paginaton">
+        <a>
+          <img src="{{image}}" class="banner" />
+        </a>
+      </ion-slide>
+      <ion-slide class="sli paginaton">
+        <a>
+          <img src="{{image}}" class="banner" />
+        </a>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="news-det-details">
+    <div class="news-det-title">
+      <img src="../../assets/imgs/open-book.png" style="height: 24px;">
+      <div class="title-news">
+        {{author}}
+        <div class="news-time">
+          {{publishedAt}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="news-det-contain">
+    <p class="details">
+      {{description}}
+    </p>
+  </div>
+  <div class="like-news">
+    <div class="div-border">
+      <div class="header_likenews">
+        <div class="header_like-title">You may like</div>
+        <a href="#" class="viewall">View All</a>
+      </div>
+    </div>
+    <div class="div-like" *ngFor="let info1 of newsList; let i = index" (click)="getnewDetails(info1.Id)">
+      <img src="{{info1.urlToImage}}" class="img-like" alt="">
+      <div>
+        <div class="news-like">
+          {{info1.title}}
+        </div>
+        <div class="like-time-news">{{info1.publishedAt}}</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ion-slides [slidesPerView]="2" class="vid-slider">
+      <ion-slide class="slide-top-news">
+        <div class="video-cls">
+          <img src="../../assets/imgs/IMG_0568.jpg" class="img-det-video" alt="">
+          <img src="../../assets/imgs/play.png" class="plybtnicondet" style="height: 17px;">
+          <div class="n_cls">
+            <p>Coming Soon</p>
+          </div>
+        </div>
+        <div class="news-title1">All eye on bangaluru,but crisis lemoming in bhopal,ms sdf uuwerwer </div>
+      </ion-slide>
+      <ion-slide class="slide-top-news">
+        <div class="video-cls">
+          <img src="../../assets/imgs/preview-114184-iSCRYfGFya-high_0008.jpg" class="img-det-video" alt="">
+          <img src="../../assets/imgs/play.png" class="plybtnicondet" style="height: 17px;">
+          <div class="n_cls">
+            <p>Coming Soon</p>
+          </div>
+        </div>
+        <div class="news-title1">All eye on bangaluru,but crisis lemoming in bhopal</div>
+      </ion-slide>
+      <ion-slide class="slide-top-news">
+        <div class="video-cls">
+          <img src="../../assets/imgs/chahal04022019.jpeg" class="img-det-video" alt="">
+          <img src="../../assets/imgs/play.png" class="plybtnicondet" style="height: 17px;">
+          <div class="n_cls">
+            <p>Coming Soon</p>
+          </div>
+        </div>
+        <div class="news-title1">All eye on bangaluru,but crisis lemoming in bhopal</div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

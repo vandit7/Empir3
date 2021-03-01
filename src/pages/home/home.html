@@ -1,0 +1,546 @@
+<ion-header style="height: 80px; background:#2375da ;">
+  <ion-navbar hideBackButton="true" style=" min-height: 54px;">
+    <button ion-button menuToggle style="display: block !important;">
+      <ion-icon><img src="../../assets/imgs/menu.png" style="height: 17px;"></ion-icon>
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+    </button>
+    <ion-icon class="lft" item-right>
+      <div>
+        <img src="../../assets/imgs/search.png" (click)="clickedSearchIcon()" class="ripple" style="height: 19px;">
+      </div>
+      <div>
+        <img src="../../assets/imgs/category.png" (click)="openModal()" class="ripple" style="height: 19px;">
+      </div>
+      <div>
+        <img src="../../assets/imgs/notification.png" (click)="notification()" class="ripple" style="height: 19px;">
+      </div>
+    </ion-icon>
+  </ion-navbar>
+
+  <ion-scroll class="scrollTOP hdCss" scrollX="true" direction="x" style="height: 25px;white-space: nowrap;">
+    <div class="cardTOP" *ngFor="let cate of tabs; let i = index" [ngStyle]="{'width': '' + widthCss + 'px'}">
+      <p (click)="newDetailsTo(i,cate)" id="test_{{cate}}" class="ptag dyn1">
+        {{cate}}
+      </p>
+    </div>
+  </ion-scroll>
+</ion-header>
+<ion-content #pageTop>
+  <div *ngIf="topSection">
+    <div class="slider-mdiv">
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let info1 of newsGoogleTop" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="slider-div">
+          <div class="topSNew">
+            <p class="topNTitle"></p>
+            <p class="topNDes">{{info1.title}}</p>
+          </div>
+          <div class="grcolorTop">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <!-- <div>
+      <div class="header_viewall" *ngIf="newsListLength > 0">
+        <div class="header_topnews">Live Score</div>
+      </div>
+      <div class="card1 ripple" style="margin: 5px 7px 4px 4px;">
+        <p class="news-score">{{team1}}</p>{{team1Score}}
+        <p class="news-score">{{team2}}</p>{{team2Score}}
+      </div>
+    </div> -->
+
+    <div *ngIf="isTopSection != false">
+      <div class="header_viewall" *ngIf="newsListLength > 0">
+        <div class="header_topnews">Top News</div><span class="atag" (click)="viewAll('TopNews')">View All</span>
+      </div>
+
+      <ion-scroll class="ion-scroll1" scrollX="true" direction="x" class="topNewScroll" *ngIf="newsListLength > 0">
+        <div class="card1 ripple" style="margin: 5px 7px 4px 4px;" *ngFor="let info1 of newsList; let i = index">
+          <ion-card class=" sliderImg " (click)="getnewDetails(info1.Id)">
+            <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+              class="img-top1" alt="">
+          </ion-card>
+          <p class="news-title">{{info1.title}}</p>
+        </div>
+      </ion-scroll>
+    </div>
+    <div style="border-top: 1px solid #eeeeee;margin-top: 3px;margin-bottom: 3px;"></div>
+
+    <ion-scroll class="ion-scroll2" scrollX="true" direction="x"
+      style="height: 100px;white-space: nowrap;padding-left: 5px;margin-top: 0px;" *ngIf="isSlider2 != false">
+      <div class="card2" style="margin: 5px 5px 4px 4px;" *ngFor="let info1 of newsAuthor; let i = index">
+        <ion-card class=" column1" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-det-video">
+          <div class="news-title-video">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </ion-card>
+      </div>
+
+      <div class="card2" style="margin: 0px 10px 4px 0px;width: 60px !important;" *ngIf="newsAuthorLength > 4">
+        <ion-card class=" column1" style="background-image: linear-gradient(to right, #1652f0, #2a88cf);color: #fff;"
+          (click)="getNewsView('author')">
+          <ion-icon name="add" class="moreData"></ion-icon>
+          <div class="tc fontDef">More</div>
+        </ion-card>
+      </div>
+    </ion-scroll>
+
+    <div *ngIf="isVideos != false">
+      <div class="div-border" *ngIf="NewslstVideoLength > 0">
+        <div class="header_viewall">
+          <div class="header_videos">Videos</div><a (click)="viewallVideo()" class="atag">View All</a>
+        </div>
+      </div>
+      <ion-scroll class="ion-scroll1" scrollX="true" direction="x" class="topNewScroll" *ngIf="NewslstVideoLength > 0">
+        <div class="card1 ripple" style="margin: 5px 5px 4px 4px;" *ngFor="let info1 of NewslstVideo; let i = index">
+          <ion-card class=" sliderImg" (click)="videoNews(info1.link,info1.Title)">
+            <img src="{{urls.ImagesPath}}/Content/{{info1.ImageUrl}}"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'" class="img-top1" alt="">
+            <img src="../../assets/imgs/play.png" class="plybtnicon" style="height: 20px;width: 20px;">
+          </ion-card>
+          <div class="news-title ripple">{{info1.Title}}</div>
+        </div>
+      </ion-scroll>
+    </div>
+
+    <div *ngIf="newsSportsLenght > 0 && isSports != false">
+      <div class="div-border">
+        <div class="header_viewall">
+          <div class="header_videos">Sports</div><a (click)="viewAll('sports')" class="atag">View All</a>
+        </div>
+      </div>
+      <div class="mb10">
+        <div class="div-like" *ngFor="let info1 of newsSports; let i = index">
+          <div>
+            <ion-card class="enterDiv">
+              <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+                class="img-like" alt="" imageViewer>
+            </ion-card>
+          </div>
+          <div (click)="getnewDetails(info1.Id)">
+            <div class="news-like ripple">
+              {{info1.title}}
+            </div>
+            <div class="like-time-news">{{info1.PublishDate}}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ion-scroll class="ion-scroll2" scrollX="true" direction="x"
+      style="height: 100px;white-space: nowrap;padding-left: 5px; margin-top: 0px;"
+      *ngIf="newsGoogleLenght > 0 && isSlider3 != false">
+      <div class="card2" style="margin: 5px 5px 4px 4px;" *ngFor="let info1 of newsGoogle; let i = index">
+        <ion-card class=" column1" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-det-video">
+          <div class="news-title-video">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </ion-card>
+      </div>
+      <div class="card2" style="margin: 0px 10px 4px 0px;width: 60px !important;" *ngIf="newsGoogleLenght > 4">
+        <ion-card class=" column1" style="background-image: linear-gradient(to right, #1652f0, #2a88cf);color: #fff;"
+          (click)="getNewsView('google')">
+          <ion-icon name="add" class="moreData"></ion-icon>
+          <div class="tc fontDef">More</div>
+        </ion-card>
+      </div>
+    </ion-scroll>
+
+    <div *ngIf="isBanner1 != false">
+      <div *ngIf="newsBanner1Length > 0">
+        <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+          *ngFor="let info1 of newsBanner1; let i = index">
+          <div class="news-video" (click)="getnewDetails(info1.Id)">
+            <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+              class="img-video" />
+            <div class="fullImg">
+              {{info1.title}}
+            </div>
+            <div class="grNew"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="newsEntertainmentLstLenght > 0 && isEntertainment != false">
+      <div class="div-border">
+        <div class="header_viewall">
+          <div class="header_videos">Entertainment</div><a (click)="viewAll('entertainment')" class="atag">View All</a>
+        </div>
+      </div>
+      <div class="mb10">
+        <div class="div-like ripple" *ngFor="let info1 of newsEntertainmentLst; let i = index">
+          <div>
+            <ion-card class="enterDiv">
+              <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+                class="img-like" alt="" imageViewer>
+            </ion-card>
+          </div>
+          <div (click)="getnewDetails(info1.Id)">
+            <div class="news-like">
+              {{info1.title}}
+            </div>
+            <div class="like-time-news">{{info1.PublishDate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="newsBanner2Length > 0 && isBanner2 != false">
+      <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+        *ngFor="let info1 of newsBanner2; let i = index">
+        <div class="news-video" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-video" />
+          <div class="fullImg">
+            {{info1.title}}
+          </div>
+          <div class="grNew"></div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="newsPoliticsLenght > 0 && isPolitics != false">
+      <div class="div-border">
+        <div class="header_viewall">
+          <div class="header_videos">Politics</div><a (click)="viewAll('politics')" class="atag">View All</a>
+        </div>
+      </div>
+      <div class="mb10">
+        <div class="div-like-politics ripple" *ngFor="let info1 of newsPolitics; let i = index">
+          <div (click)="getnewDetails(info1.Id)">
+            <div class="news-like1">
+              {{info1.title}}
+            </div>
+            <div class="like-time-newsleft">{{info1.PublishDate}}</div>
+          </div>
+          <div>
+            <ion-card class="enterDiv">
+              <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+                class="img-like" alt="" imageViewer>
+            </ion-card>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="newsBusinessLenght > 0 && isBusiness != false">
+      <div class="div-border">
+        <div class="header_viewall">
+          <div class="header_videos">Business</div><a (click)="viewAll('business')" class="atag">View All</a>
+        </div>
+      </div>
+      <div class="mb10">
+        <div class="div-like ripple" *ngFor="let info1 of newsBusiness; let i = index">
+          <div>
+            <ion-card class="enterDiv">
+              <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+                class="img-like" alt="" imageViewer>
+            </ion-card>
+          </div>
+          <div (click)="getnewDetails(info1.Id)">
+            <div class="news-like">
+              {{info1.title}}
+            </div>
+            <div class="like-time-news">{{info1.PublishDate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!----------------------------------------------------------------------------->
+  <!------------------------------PHOTOS SECTION--------------------------------->
+  <!----------------------------------------------------------------------------->
+
+  <div *ngIf="otherSection">
+    <!-- <div class="div-border" *ngIf="NewslstVideoLength > 0">
+      <div class="header_viewall">
+        <div class="header_videos">Videos</div><a (click)="viewallVideo()" class="atag">View All</a>
+      </div>
+    </div>
+    <ion-scroll class="ion-scroll1" scrollX="true" direction="x" class="topNewScroll" *ngIf="NewslstVideoLength > 0">
+      <div class="card1" style="margin: 5px 5px 4px 4px;" *ngFor="let info1 of NewslstVideo; let i = index">
+        <ion-card class=" sliderImg" (click)="videoNews(info1.link,info1.Title)">
+          <img src="{{info1.ImageUrl}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'" class="img-top1"alt="">
+          <span class="plybtnicon" style="color: #fff;right: 22px;">
+          <ion-icon ios="ios-image" md="md-image"></ion-icon>
+          </span>
+          <span class="plybtnicon phTxt">
+            10
+            </span>
+        </ion-card>
+        <div class="news-title">{{info1.Title}}</div>
+      </div>
+    </ion-scroll> -->
+    <p class="comText">Coming Soon..</p>
+  </div>
+  <div class="story">
+    <div *ngIf="storySection">
+      <div *ngIf="!StoryListNotFound">
+        <div class="header_viewall">
+          <div class="header_videos">Top Story</div>
+        </div>
+        <div class="mb10" *ngFor="let info1 of StoryList; let i = index">
+          <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;" class="ripple"
+            (click)="getnewDetailsStory(info1.Id)">
+            <ion-card class="news-video">
+              <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+                class="img-video" />
+              <div class="fullTextStory">
+                {{info1.title}}
+              </div>
+              <div class="grNewStory"></div>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="StoryListNotFound">
+        <p class="noRecord">Record Not Found</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="photosSection">
+    <div *ngIf="!PhotosNotFound">
+      <div class="header_viewall">
+        <div class="header_videos">Photos</div>
+      </div>
+      <div class="mb10" *ngFor="let info1 of PhotosList; let i = index">
+        <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;background: rgba(0,0,0,0)" class="ripple"
+          (click)="getPhotosTest(info1.Id)">
+          <ion-card class="news-video">
+            <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+              class="img-video" />
+            <div class="fullTextStory">
+              {{info1.title}}
+            </div>
+            <div class="grNewStory"></div>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="PhotosNotFound">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+  <div *ngIf="magazineSection">
+    <div *ngIf="!magazineNotFound">
+      <div class="header_viewall">
+        <div class="header_videos">Magazine</div>
+      </div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column ripple" *ngFor="let info1 of magazineList; let i = index"
+          (click)="getMagazineByName(info1.magazinename)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.Logo}}" class="img-det-Magazine"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="fullTextStory">{{info1.magazinename}}</div>
+          <div class="grcolor-magazine">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="magazineNotFound">
+      <!-- <p class="noRecord">Record Not Found</p> -->
+      <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+        *ngFor="let info1 of magazineList; let i = index">
+        <div class="news-video" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-video" />
+          <div class="fullImg">
+            {{info1.title}}
+          </div>
+          <div class="grNew"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="trendingSection">
+    <div *ngIf="!trendingNotFound">
+      <div class="header_viewall">
+        <div class="header_videos">Trending</div>
+      </div>
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column ripple" *ngFor="let info1 of newsTrending; let i = index" (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor-trending">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="trendingNotFound">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+
+  <div *ngIf="marketSection">
+    <div *ngIf="!marketNotFound">
+      <ion-scroll class="header_viewallmr" scrollX="true" direction="x">
+        <div class="header_viewallmr">
+          <div class="header_videosmr" id="shares" (click)="selectType('Shares')">Shares</div>
+          <div class="header_videosmr" id="market" (click)="selectType('Market')">Markets</div>
+          <div class="header_videosmr" id="crypto" (click)="selectType('Crypto')">Crypto</div>
+          <div class="header_videosmr" id="forex" (click)="selectType('Forex')">Forex</div>
+          <!-- <div class="header_videosmr" id="favour" (click)="addfavourite('Favourite')">Favourite</div> -->
+          <!-- <img src="../../assets/imgs/refresh.png" (click)="GetMarketdata()"> -->
+        </div>
+      </ion-scroll>
+      <div class="refresh">
+        <div class="s-bar">
+          <div class="search">
+            <ion-searchbar (search)="searchData($event);" [(ngModel)]="myInput" [showCancelButton]="false"
+              (Cancel)="onCancelSearch($event)">
+            </ion-searchbar>
+          </div>
+          <div class="refreshimg">
+            <img src="../../assets/imgs/refresh.png" (click)="refresh()">
+          </div>
+        </div>
+      </div>
+      <div class="scroll-y mainmarket" scrollY="true" [ngStyle]="{'height': '' + heightCss + 'px'}">
+        <div *ngIf="shareListLength > 0">
+          <ion-infinite-scroll class="mb10 share-div" *ngFor="let info1 of sharelist; let i = index"
+            (click)="addfavouriteList(info1.Id)">
+            <div class="mt-title ripple">
+              {{info1.Symbol}}
+              <div class="rate">
+                <div class="lprice" id="share_{{i}}">
+                  {{info1.Price}}
+                </div>
+                <div class="shrt-name">
+                  <span>
+                    <img src="../../assets/imgs/up-arrow.png" *ngIf="info1.Updown == '+'">
+                    <img src="../../assets/imgs/down-arrow.png" *ngIf="info1.Updown == '-'">
+                    <span [style.color]="info1.Updown == '+' ? '#069e57' : (info1.Updown == '-' ? '#c00900' : null)">
+                      {{info1.Change}}</span> ({{info1.Chg_per}})
+                  </span>
+                </div>
+              </div>
+              <img src="{{info1.Flag1}}" class="country-flag" *ngIf="info1.Flag1 != null">
+              <img src="{{info1.Flag2}}" class="country-flag" *ngIf="info1.Flag2 != null">
+              <div class="shrt-name">{{info1.Type}} </div>
+            </div>
+          </ion-infinite-scroll>
+        </div>
+        <div *ngIf="shareListLength == 0" class="share-div">
+          <p class="noRecord">Record Not Found</p>
+        </div>
+        <div *ngIf="marketListLength > 0">
+          <ion-infinite-scroll class="mb10 market-div" *ngFor="let info1 of marketList; let i = index"
+            (click)="addfavouriteList(info1.Id)">
+            <div class="mt-title ripple">
+              {{info1.StkExchg}}
+              <div class="rate">
+                <div class="lprice">
+                  {{info1.LastPrice}}
+                </div>
+                <div class="shrt-name">
+                  <span>
+                    <img src="../../assets/imgs/up-arrow.png" *ngIf="info1.Direction == 1">
+                    <img src="../../assets/imgs/down-arrow.png" *ngIf="info1.Direction == -1">
+                    <span [style.color]="info1.Direction == 1 ? '#069e57' : (info1.Direction == -1 ? '#c00900' : null)">
+                      {{info1.Change}}</span> ({{info1.Percentchange}} %)
+                  </span>
+                </div>
+              </div>
+              <div class="shrt-name">{{info1.Exchange}} </div>
+            </div>
+          </ion-infinite-scroll>
+        </div>
+        <div *ngIf="marketListLength == 0" class="market-div">
+          <p class="noRecord">Record Not Found</p>
+        </div>
+        <div *ngIf="forexListLength > 0">
+          <ion-infinite-scroll class="mb10 forex-div" *ngFor="let info1 of forexList; let i = index"
+            (click)="addfavouriteList(info1.Id)">
+            <div class="mt-title ripple">
+              {{info1.Symbol}}
+              <div class="rate">
+                <div class="lprice">
+                  {{info1.Price}}
+                </div>
+                <div class="shrt-name">
+                  <span>
+                    <img src="../../assets/imgs/up-arrow.png" *ngIf="info1.Updown == '+'">
+                    <img src="../../assets/imgs/down-arrow.png" *ngIf="info1.Updown == '-'">
+                    <span [style.color]="info1.Updown == '+' ? '#069e57' : (info1.Updown == '-' ? '#c00900' : null)">
+                      {{info1.Change}}</span> ({{info1.Chg_per}})
+                  </span>
+                </div>
+              </div>
+              <img src="{{info1.Flag1}}" class="country-flag" *ngIf="info1.Flag1 != null">
+              <img src="{{info1.Flag2}}" class="country-flag" *ngIf="info1.Flag2 != null">
+              <div class="shrt-name">{{info1.Type}} </div>
+            </div>
+          </ion-infinite-scroll>
+        </div>
+        <div *ngIf="forexListLength == 0" class="forex-div">
+          <p class="noRecord">Record Not Found</p>
+        </div>
+        <div *ngIf="cryptoListLength > 0">
+          <ion-infinite-scroll class="mb10 crypto-div" id="cryp" *ngFor="let info1 of cryptoList; let i = index"
+            (click)="addfavouriteList(info1.Id)">
+            <div class="mt-title ripple">
+              {{info1.exchangeId}}
+              <div class="rate">
+                <div class="lprice">
+                  {{info1.priceUsd | slice:0:9}}
+                </div>
+                <div class="shrt-name">
+                  <span>
+                    ({{info1.quoteSymbol}})
+                  </span>
+                </div>
+              </div>
+              <div class="shrt-name">{{info1.baseSymbol}} </div>
+            </div>
+          </ion-infinite-scroll>
+        </div>
+        <div *ngIf="cryptoListLength == 0" class="crypto-div">
+          <p class="noRecord">Record Not Found</p>
+        </div>
+        <ion-infinite-scroll class="mb10 favourite-div" id="favour">
+          <div class="mt-title ripple">
+            <div class="rate">
+              <div class="lprice">
+              </div>
+              <div class="shrt-name">
+                <span>
+                </span>
+              </div>
+            </div>
+            <div class="shrt-name"></div>
+          </div>
+        </ion-infinite-scroll>
+      </div>
+    </div>
+
+    <div *ngIf="marketNotFound">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="crescent" class="loadingText" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<div class="msgText" *ngIf="exitText">
+  <p class="copyP">Press again to exit</p>
+</div>

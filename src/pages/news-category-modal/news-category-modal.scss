@@ -1,0 +1,42 @@
+page-news-category-modal {
+    .toolbar-background-md {
+        background: #fff;
+    }
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+    .clr-button {
+        margin-top: 0px;
+        text-align: center;
+        background: #333333;
+        color: #fff;
+        // padding: 10px 20px 10px 13px;
+        font-size: 11px;
+        text-transform: uppercase;
+        width: 30%;
+      }
+      
+      .apl-button {
+        background: #1652f0;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 11px;
+        float: left;
+        width: 100%;
+        text-align: center;
+        // padding: 10px;
+        width: 70%;
+      }
+      .footer {
+        height: 35px;
+        background-color: #fff;
+        display: flex;
+        width: 100%;
+        line-height: 35px;
+      }
+      .selected {
+        color: #488aff;
+        background-color: #fff;
+        border-left: 2px solid #1652f0;
+      }
+}

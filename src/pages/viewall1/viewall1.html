@@ -1,0 +1,27 @@
+<ion-header class="topCss">
+  <ion-navbar>
+    <ion-title class="ptagNew">All News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div style="padding: 10px;width: 100%;float: left;" *ngIf="newsListLength > 0">
+      <div class="card2" style="margin:5px 5px 0px 0px;" *ngFor="let info1 of newsList; let i = index">
+        <ion-card class="column1" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-det-video">
+          <div class="news-title-video">{{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </ion-card>
+      </div>
+    </div>
+    <div *ngIf="newsListLength == 0">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

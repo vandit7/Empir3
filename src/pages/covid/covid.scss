@@ -1,0 +1,26 @@
+page-covid {
+    td, th {
+        padding: 10px;
+        white-space: nowrap;
+        border: 1px solid #ddd;
+    }
+    .table-responsive {
+        overflow: auto;
+    }
+    .header_viewall {
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px 5px;
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.4px;
+      }
+      .header_videos {
+        font-size: 14px;
+        color: #2375da;
+        font-weight: 500;
+        font-family: "Oswald", sans-serif;
+      }
+}

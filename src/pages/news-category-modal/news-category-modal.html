@@ -1,0 +1,193 @@
+<ion-header class="modal-header">
+  <ion-navbar>
+    <ion-title>
+      <p class="modal-title">Choose your favourites</p>
+    </ion-title>
+    <ion-buttons end class="icn">
+      <!-- <div class="srch">
+        <img src="../../assets/imgs/search_dark.png" style="height: 17px;">
+      </div> -->
+      <button ion-button icon-only (click)="closeModal()">
+        <img src="../../assets/imgs/close.png" style="height: 17px;">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="no-scroll">
+  <div class="modal-content main-modal">
+    <div class="type1">
+      <div class="type-cls language selected" (click)="changeCategory('lang')">Languages</div>
+      <div class="type-cls category" (click)="changeCategory('cate')">Category</div>
+      <div class="type-cls publisher" (click)="changeCategory('publ')">Publisher</div>
+    </div>
+    <div class="main-content">
+      <div class="w100">
+
+        <div class="div-lang" [ngStyle]="{'height': '' + heightCss + 'px'}">
+          <div class="language-name" (click)="selectlanguage(info1.CodeId)"
+            *ngFor="let info1 of languageList; let i = index">
+            <div class="div-language option" id="{{info1.CodeId}}">
+              <span class="spn">
+                {{info1.CodeDesc}}
+                <div class="test"> {{info1.CodeDesc}}
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <!-- <div class="language-name" (click)="selectlanguage('hid')">
+            <div class="div-language option" id="hid">
+              <span class="spn">
+                Hindi
+                <div class="test">Hindi
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('tel')">
+            <div class="div-language option" id="tel">
+              <span class="spn">
+                Telugu
+                <div class="test">Telugu
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('tam')">
+            <div class="div-language option" id="tam">
+              <span class="spn">
+                Tamil
+                <div class="test">Tamil
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('ben')">
+            <div class="div-language option" id="ben">
+              <span class="spn">
+                Bengali
+                <div class="test">Bengali
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('guj')">
+            <div class="div-language option" id="guj">
+              <span class="spn">
+                Gujarati
+                <div class="test">Gujarati
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('mal')">
+            <div class="div-language option" id="mal">
+              <span class="spn">
+                Malayalam
+                <div class="test">Malayalam
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('knd')">
+            <div class="div-language option" id="knd">
+              <span class="spn">
+                Kannda
+                <div class="test">Kannda
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('mar')">
+            <div class="div-language option" id="mar">
+              <span class="spn">
+                Marathi
+                <div class="test">Marathi
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('urd')">
+            <div class="div-language option" id="urd">
+              <span class="spn">
+                Urdu
+                <div class="test">Urdu
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('asm')">
+            <div class="div-language option" id="asm">
+              <span class="spn">
+                Asamiya
+                <div class="test">Asamiya
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div>
+          <div class="language-name" (click)="selectlanguage('nep')">
+            <div class="div-language option" id="nep">
+              <span class="spn">
+                Nepali
+                <div class="test">Nepali
+                  <img src="../../assets/imgs/right1.png" class="right-icon">
+                </div>
+              </span>
+            </div>
+          </div> -->
+          <!-- <div style="text-align: center;position: relative;top: 35%;color: #488aff;font-weight: 500;font-size: 20px;">Coming soon</div> -->
+        </div>
+        <div class="div-category" [ngStyle]="{'height': '' + heightCss + 'px'}">
+          <div class="cls-category" (click)="selectCategory(info1.CategoryName)"
+            *ngFor="let info1 of categoryList; let i = index">
+            <div id="1_{{info1.CategoryName}}">
+              <img src="../../assets/imgs/right1.png" id="1_{{info1.CategoryName}}img" class="right-cate">
+            </div>
+            <div class="main-category">
+              <span class="spn-category">
+                <img src={{info1.Icon}} class="img-category">
+                <div class="category-name">{{info1.CategoryName}}</div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="div-publisher" [ngStyle]="{'height': '' + heightCss + 'px'}">
+          <div class="cls-publisher" (click)="selectPubliher(pub.author,i)" id="{{i}}"
+            *ngFor="let pub of publisherList; let i = index">
+            <img src="{{pub.UrlImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'" class="img-publisher" alt="" imageViewer>
+            <div class="maindiv">
+              <div class="title-publisher">
+                {{pub.author}}
+              </div>
+              <div class="rightdiv">
+                <img src="../../assets/imgs/right1.png" id="img_{{i}}" class="img-righticn" alt="">
+              </div>
+            </div>
+          </div>
+           <!-- <div style="text-align: center;position: relative;top: 35%;color: #488aff;font-weight: 500;font-size: 20px;">Coming soon</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="footer">
+    <div class="clr-button" (click)="clearall()">
+      Clear All
+    </div>
+    <div class="apl-button" (click)="applyFilter()">
+      Apply Now
+    </div>
+  </div>
+  
+</ion-footer>

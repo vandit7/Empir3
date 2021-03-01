@@ -1,0 +1,90 @@
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <div class="" style="width: 100%;float: left; ">
+      <div (click)="goHome()" style="width: 12%;float: left; "><img src="../../assets/imgs/back.png" class="bk-btn">
+      </div>
+      <div class="lg">
+        <img src="../../assets/imgs/text_logo.png" style="height: 19px;">
+      </div>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageTop>
+  <div class="newsdet-title">
+    {{content1}}
+  </div>
+  <div class="news-detslider">
+    <!-- <div class="news-deticon">
+      <img src="../../assets/imgs/info.png" style="height: 17px;">
+    </div> -->
+    <div class="news-deticon1">
+      <img src="../../assets/imgs/share.png" style="height: 17px;" (click)="share()">
+    </div>
+    <a class="banner-section">
+      <img src="{{image}}" imageViewer class="banner" style="height: 250px;object-fit: cover;"
+        onError="this.src='assets/imgs/no-image-available-icon-6.png'" />
+    </a>
+  </div>
+  <div class="news-det-details">
+    <div class="news-det-title1">
+      <img src="{{logo}}" onError="this.src='assets/imgs/open-book.png'" class="lg-author"
+        (click)="authorpage1(author)">
+      <div class="title-news" (click)="authorpage1(author)">
+        {{author}}
+      </div>
+    </div>
+    <div class="news-time">
+      {{publishedAt}}
+    </div>
+  </div>
+  <div class="news-det-contain">
+    <p class="details" [innerHTML]="description">
+    </p>
+  </div>
+  <div *ngIf="newsBanner2Length > 0">
+    <div style="border-top: 1px solid #eeeeee;margin-top: 7px;margin-bottom: 7px;"></div>
+    <ion-scroll class="ion-scroll2" scrollX="true" direction="x"
+      style="height: 100px;white-space: nowrap;padding-left: 5px; margin-top: 0px; margin-bottom: 10px;">
+      <div class="card2" style="margin: 5px 5px 4px 4px;" *ngFor="let info1 of newsBanner2;">
+        <ion-card class=" column1" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-det-video">
+          <div class="news-title-video"> {{info1.title}}</div>
+          <div class="grcolor">
+          </div>
+        </ion-card>
+      </div>
+    </ion-scroll>
+  </div>
+  <div *ngIf="newsRelatedLenght > 0">
+    <div class="like-news">
+      <div class="div-border">
+        <div class="header_likenews">
+          <div class="header_like-title">You may like</div>
+          <!-- <a href="#" class="viewall">View All</a> -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="div-like" *ngFor="let info1 of newsRelated; let i = index">
+        <div>
+          <ion-card class="enterDiv">
+            <img src="{{info1.urlToImage}}" class="img-like" alt=""
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'" imageViewer>
+          </ion-card>
+        </div>
+        <div (click)="getnewDetails(info1.Id)">
+          <div class="news-like">
+            {{info1.title}}
+          </div>
+          <div class="like-time-news">{{info1.PublishDate}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

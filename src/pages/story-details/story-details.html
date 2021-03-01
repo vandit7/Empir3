@@ -1,0 +1,24 @@
+<ion-header class="topCss">
+  <ion-navbar >
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div class="" >
+    <div style="position: relative; margin: 5px 0px 0px 0px;height: 200px;" >
+      <ion-card class="news-video">
+        <img src="{{image}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'" class="img-video" />
+        <div class="fullTextStory">
+         {{content1}}
+        </div>
+        <div class="grNewStory"></div>
+      </ion-card>
+    </div>
+</div>
+<div class="news-det-contain">
+  <p class="details" [innerHTML]="description">
+
+  </p>
+</div>
+</ion-content>

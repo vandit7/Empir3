@@ -1,0 +1,59 @@
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle style="display: block !important;">
+      <ion-icon><img src="../../assets/imgs/menu.png" style="height: 17px;"></ion-icon>
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+    </button>
+  </ion-navbar>
+  <div class="cat_cls">
+    <div class="header_viewall">
+      <div class="header_videos"> <span class="TxtLed">Report coronavirus cases</span></div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="table-responsive">
+  <table id="main_table_countries_today"
+    class="table table-bordered table-hover main_table_countries dataTable no-footer" style="width: 100%;">
+    <thead>
+      <tr role="row">
+        <th width="100" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="Country,Other: activate to sort column ascending" style="width: 100px;">Country,<br>Other</th>
+        <th width="20" class="sorting_desc" tabindex="0" aria-controls="main_table_countries_today" rowspan="1"
+          colspan="1" aria-sort="descending" aria-label="TotalCases: activate to sort column ascending"
+          style="width: 42px;">Total<br>Cases</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="NewCases: activate to sort column ascending" style="width: 42px;">New<br>Cases</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="TotalDeaths: activate to sort column ascending" style="width: 47px;">Total<br>Deaths</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="NewDeaths: activate to sort column ascending" style="width: 47px;">New<br>Deaths</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="TotalRecovered: activate to sort column ascending" style="width: 72px;">Total<br>Recovered</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="ActiveCases: activate to sort column ascending" style="width: 43px;">Active<br>Cases</th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="Serious,Critical: activate to sort column ascending" style="width: 56px;">Serious,<br>Critical
+        </th>
+        <th width="30" class="sorting" tabindex="0" aria-controls="main_table_countries_today" rowspan="1" colspan="1"
+          aria-label="Tot&amp;nbsp;Cases/1M pop: activate to sort column ascending" style="width: 70px;">
+          Tot&nbsp;Cases/<br>1M pop</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="" role="row" class="odd" *ngFor="let info1 of table; let i = index">
+        <td style="font-weight: bold; font-size:15px; text-align:left;">{{info1.Country}}</td>
+        <td style="font-weight: bold; text-align:right" class="sorting_1">{{info1.TotalCase}}</td>
+        <td style="font-weight: bold; text-align:right;background-color:#FFEEAA;">{{info1.NewCases}}</td>
+        <td style="font-weight: bold; text-align:right;background-color:red; color:white">{{info1.TotalDeaths}} </td>
+        <td style="font-weight: bold; text-align:right;">{{info1.NewDeaths}}  </td>
+        <td style="font-weight: bold; text-align:right;">{{info1.TotalRecover}}  </td>
+        <td style="font-weight: bold; text-align:right;">{{info1.ActiveCase}}  </td>
+        <td style="font-weight: bold; text-align:right;">{{info1.SeriousCase}} </td>
+        <td style="font-weight: bold; text-align:right;">{{info1.TotCases}}  </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</ion-content>

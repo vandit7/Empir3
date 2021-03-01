@@ -1,0 +1,59 @@
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <div class="" style="width: 100%;float: left; ">
+      <div (click)="goHome()" style="width: 10%;float: left; "><img src="../../assets/imgs/back.png" class="bk-btn">
+      </div>
+      <!-- <ion-scroll class="scrollTOP hdCss" scrollX="true" direction="x" style="height: 25px;white-space: nowrap;width: 90%;margin-top:4px;float: left;"> 
+        <div class="cardTOP" style="margin: 5px 5px 4px 4px;" *ngFor="let cate of categoryList; let i = index">
+          <p (click)="goHome()" class="ptagNew" id="{{cate.CategoryName}}">
+            {{cate.CategoryName}}
+        </p>
+        </div>
+      </ion-scroll> -->
+
+      <ion-title>
+        <p class="ptagNew">Video News</p>
+      </ion-title>
+
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 250px;padding: 10px;" *ngIf="!videoImg">
+    <iframe width="100%" height="100%" [src]="livefullurl" autoplay="autoplay" frameborder="0"
+      style="border-radius: 8px;" name="myiframe"></iframe>
+  </div>
+
+  <div style="position: relative; margin: 10px 10px 5px 10px; height: 240px;" *ngIf="videoImg">
+    <img src="assets/imgs/no-image-available-icon-6.png" class="img-video w100"
+      style="border-radius: 8px; height: 100%;object-fit: cover;" />
+    <div class="n_cls">
+      <img src="../../assets/imgs/play.png" class="plybtn-video">
+    </div>
+  </div>
+  <div class=" disFlex plr15" style="margin-top: 5px;">
+    <div class="title  w80">
+      <p class="f12 newsText">{{NewsTitle}}</p>
+    </div>
+    <div class="w20 tr">
+      <img src="../../assets/imgs/share1.png" (click)="share(NewsTitle,livefullurl)" class="" style="height: 17px;">
+    </div>
+  </div>
+  <ion-scroll class="" scrollY="true"
+    style="white-space: nowrap;padding-left: 5px; margin-top: 5px; margin-bottom: 10px;width: 100%;float: left;"
+    [ngStyle]="{'height': '' + heightCss + 'px'}">
+    <div class="row" style="margin: 5px 5px 0px 7px !important;">
+      <div class="column" *ngFor="let info1 of AllVideo; let i = index" (click)="setVideo(info1.link,info1.Title)">
+        <ion-card class="videoDiv">
+          <img src="{{urls.ImagesPath}}/Content/{{info1.ImageUrl}}" class="img-det-video"
+            onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+          <img src="../../assets/imgs/play.png" class="plybtnicondet">
+        </ion-card>
+        <div class="newsTitleVideo">{{info1.Title}}</div>
+        <div class="grcolor">
+        </div>
+      </div>
+    </div>
+  </ion-scroll>
+</ion-content>

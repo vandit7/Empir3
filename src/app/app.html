@@ -1,0 +1,28 @@
+<ion-menu [content]="content" type="overlay">
+  <ion-header>
+    <ion-toolbar class="tc">
+     <img src="../../assets/imgs/text_logo.png" style="height: 25px;">
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item  (click)="openPage('Home')"  [class.selected]="idx === currentSelected" class="menuBtn activeItem homecss">
+        <div><img class="img-category1" src="../../assets/imgs/home-icon.png"></div>
+        <div class="d-name">Home</div>
+      </button>
+      <button menuClose ion-item  (click)="openPage('Trending')"  class="menuBtn  homecss" id="trending">
+        <div><img class="img-category1" src="../../assets/imgs/trending.png"></div>
+        <div class="d-trending">Trending</div>
+      </button>
+      <button menuClose ion-item *ngFor="let p of category; let idx = index" (click)="openPage(p.CategoryName, idx)" [class.activeItem]="isActive(p.CategoryName)"  
+      [ngClass]="{'selectedMenu' : (p.CategoryName == selectedmenu)}" [class.selected]="idx === currentSelected" class="menuBtn ">
+        <div><img class="img-category1" src={{p.Icon}}></div>
+        <div class="d-name {{p.ClassName}}">{{p.CategoryName}}</div>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

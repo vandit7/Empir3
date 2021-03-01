@@ -1,0 +1,44 @@
+<!--
+  Generated template for the TrendingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle style="display: block !important;">
+      <ion-icon><img src="../../assets/imgs/menu.png" style="height: 17px;"></ion-icon>
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+    </button>
+  </ion-navbar>
+  <div class="cat_cls" >
+    <div class="header_viewall">
+      <div class="header_videos">Trending <span class="TxtLed"></span></div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content #pageTop>
+  <div>
+    <div *ngIf="!trendingNotFound">
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column ripple" *ngFor="let info1 of newsTrending; let i = index" (click)="getnewDetails(info1.Id)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.urlToImage}}" class="img-det-video"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="newsTitleVideo">{{info1.title}}</div>
+          <div class="grcolor-trending">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="trendingNotFound">
+      <p class="noRecord">Record Not Found</p>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

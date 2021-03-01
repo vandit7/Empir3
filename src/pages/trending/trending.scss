@@ -1,0 +1,119 @@
+page-trending {
+    .header_viewall {
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px 5px;
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.4px;
+
+      }
+      .header_videos {
+        font-size: 16px;
+        color: #2375da;
+        font-weight: 500;
+        font-family: "Oswald", sans-serif;
+      }
+      .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        padding-left: 2px;
+        padding-bottom: 0px;
+        position: relative;
+      }
+      .ripple {
+        position: relative;
+        overflow: hidden;
+        transform: translate3d(0, 0, 0);
+      }
+      
+      .ripple:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, rgb(232, 211, 211) 10%, transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform .5s, opacity 1s;
+      }
+      
+      .ripple:active:after {
+        transform: scale(0, 0);
+        opacity: .3;
+        transition: 0s;
+      }
+      .videoDiv {
+        width: 100%;
+        height: 160px;
+        margin: 0;
+        border-radius: 5px;
+      }
+      .newsTitleVideo {
+        position: absolute;
+        bottom: 10px;
+        font-size: 13px;
+        color: #fff;
+        width: 100%;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-align: left;
+        overflow: hidden;
+        z-index: 333333333;
+        font-family: "Oswald", sans-serif;
+        padding-left: 7px;
+        padding-right: 7px;
+        letter-spacing: 0.6px;
+        line-height: 17px;
+        font-weight: 400;
+        white-space: normal
+      }
+      .grcolor-trending {
+        position: absolute;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, transparent), to(#000));
+        background-image: linear-gradient(transparent 60%, #000);
+        z-index: 99999999;
+        width: 96%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+      }
+      .noRecord {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 25px;
+        text-transform: uppercase;
+        font-family: "Oswald", sans-serif;
+        color: #2375da;
+      }
+      .lg {
+        margin-top: 10px;
+        width: 84%;
+        float: left;
+        margin-right: 0px;
+      }
+      .loadingText .spinner-crescent circle {
+        stroke: #1652f0;
+      }
+      .infinite-loading-text{
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.4px;
+        color: #1652f0;
+        font-size: 16px;
+      }
+      .topCss .toolbar-md {
+        padding: 1px;
+        min-height: 45px;
+      }
+}

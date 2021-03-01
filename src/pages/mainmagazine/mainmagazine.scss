@@ -1,0 +1,158 @@
+page-mainmagazine {
+      .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        padding-left: 2px;
+        padding-bottom: 0px;
+        position: relative;
+      }
+      .ripple {
+        position: relative;
+        overflow: hidden;
+        transform: translate3d(0, 0, 0);
+      }
+    
+      .ripple:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, rgb(232, 211, 211) 10%, transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform 0.5s, opacity 1s;
+      }
+    
+      .ripple:active:after {
+        transform: scale(0, 0);
+        opacity: 0.3;
+        transition: 0s;
+      }
+      .videoDiv {
+        width: 100%;
+        height: 160px;
+        margin: 0;
+        border-radius: 5px;
+      }
+      .img-det-Magazine {
+        width: 100% !important;
+        height: 111px !important;
+        max-width: inherit !important;
+        max-height: inherit !important;
+        object-fit: scale-down;
+        background-image: linear-gradient(transparent 5%, #000);
+      }
+      .fullTextStory {
+        position: absolute;
+        bottom: 10px;
+        color: #fff;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 1.4em;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        font-family: "Oswald", sans-serif;
+        font-size: 20px;
+        letter-spacing: 0.4px;
+        padding: 6px 0px 0px 8px;
+        z-index: 9999999999;
+        height: auto;
+      }
+      .grcolor-magazine {
+        position: absolute;
+        background-image: linear-gradient(transparent 60%, #000);
+        z-index: 99999999;
+        width: 96%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+      }
+      .noRecord {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 25px;
+        text-transform: uppercase;
+        font-family: "Oswald", sans-serif;
+        color: #2375da;
+      }
+      .lg {
+        margin-top: 10px;
+        width: 84%;
+        float: left;
+        margin-right: 0px;
+      }
+      .header_viewall {
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px 5px;
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.4px;
+      }
+      .header_videos {
+        font-size: 14px;
+        color: #2375da;
+        font-weight: 500;
+        font-family: "Oswald", sans-serif;
+      }
+      .topCss .toolbar-md {
+        padding: 1px;
+        min-height: 45px;
+      }
+      .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        left: 0;
+        bottom: -5px;
+        background-position: left 0 top -2px;
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        background-image: none !important;
+        background-repeat: repeat-x;
+        content: "";
+    }
+    .img-video {
+      border: none;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .fullImg {
+      position: absolute;
+      bottom: 10px;
+      color: #fff;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 1.4em;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      font-family: "Oswald", sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.4px;
+      padding: 6px 0px 0px 8px;
+      z-index: 9999999999;
+      height: auto;
+    }
+    .grNew {
+      position: absolute;
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, transparent), to(#000));
+      background-image: linear-gradient(transparent 60%, #000);
+      z-index: 99999999;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      /* border-radius: 5px; */
+    }
+}

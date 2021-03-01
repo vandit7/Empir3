@@ -1,0 +1,51 @@
+<!--
+  Generated template for the MainmagazinePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="topCss">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle style="display: block !important;">
+      <ion-icon><img src="../../assets/imgs/menu.png" style="height: 17px;"></ion-icon>
+      <ion-title><img src="../../assets/imgs/text_logo.png" style="height: 17px;"></ion-title>
+    </button>
+  </ion-navbar>
+  <div class="cat_cls" style="display: block;">
+    <div class="header_viewall">
+      <div class="header_videos">Magazine </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content #pageTop>
+    <div *ngIf="!magazineNotFound">
+      <div class="row" style="margin: 5px 5px 0px 7px !important;">
+        <div class="column ripple" *ngFor="let info1 of magazineList; let i = index"
+          (click)="getMagazineByName(info1.magazinename)">
+          <ion-card class="videoDiv">
+            <img src="{{info1.Logo}}" class="img-det-Magazine"
+              onError="this.src='assets/imgs/no-image-available-icon-6.png'">
+            <img src="../../assets/imgs/play.png" class="plybtnicondet">
+          </ion-card>
+          <div class="fullTextStory">{{info1.magazinename}}</div>
+          <div class="grcolor-magazine">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="magazineNotFound">
+      <!-- <p class="noRecord">Record Not Found</p> -->
+      <div style="position: relative; margin: 5px 0px 10px 0px;height: 200px;"
+        *ngFor="let info1 of magazineList; let i = index">
+        <div class="news-video" (click)="getnewDetails(info1.Id)">
+          <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+            class="img-video" />
+          <div class="fullImg">
+            {{info1.title}}
+          </div>
+          <div class="grNew"></div>
+        </div>
+      </div>
+    </div>
+</ion-content>

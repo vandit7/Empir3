@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{magazineName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageTop>
+    <div class="mb10">
+      <div class="div-like" *ngFor="let info1 of magazineList; let i = index" (click)="magazinedet(info1.title)">
+        <div>
+          <ion-card class="enterDiv">
+            <img src="{{info1.urlToImage}}" onError="this.src='assets/imgs/no-image-available-icon-6.png'"
+              class="img-like" alt="" imageViewer>
+          </ion-card>
+        </div>
+        <div>
+          <div class="news-like">
+            {{info1.title}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+</ion-content>
